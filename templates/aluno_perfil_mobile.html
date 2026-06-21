@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% from 'components.html' import mobile_nav %}
+{% block body %}
+<main class="mobile-app"><header class="mobile-header"><a href="{{ url_for('aluno_dashboard') }}"><i data-lucide="arrow-left"></i></a><h1>Perfil</h1><i data-lucide="settings"></i></header>
+<section class="profile-mobile"><div class="profile-photo">{{ aluno.nome[0] }}</div><h1>{{ aluno.nome }}</h1><p>Aluna desde {{ aluno.inicio }}</p><span class="badge-status">{{ aluno.status }}</span></section>
+<section class="panel mobile-panel menu-list"><a><i data-lucide="user"></i>Meus Dados <span>›</span></a><a><i data-lucide="target"></i>Meus Objetivos <span>›</span></a><a><i data-lucide="bell"></i>Notificações <span>›</span></a><a><i data-lucide="lock-keyhole"></i>Alterar Senha <span>›</span></a><a class="redtxt" href="{{ url_for('login') }}"><i data-lucide="log-out"></i>Sair <span>›</span></a></section>{{ mobile_nav('perfil') }}</main>
+{% endblock %}

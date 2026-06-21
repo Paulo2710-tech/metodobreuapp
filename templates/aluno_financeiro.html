@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% from 'components.html' import mobile_nav %}
+{% block body %}
+<main class="mobile-app"><header class="mobile-header"><a href="{{ url_for('aluno_dashboard') }}"><i data-lucide="arrow-left"></i></a><h1>Financeiro</h1><i data-lucide="wallet"></i></header><div class="tabs"><button class="active">Mensalidades</button><button>Histórico</button></div>
+<article class="balance-card"><span>Saldo em aberto</span><strong>R$ {{ '%.2f'|format(aluno.valor) }}</strong></article>
+<section class="panel mobile-panel"><h2>Mensalidades</h2><div class="pay-row"><div><strong>Julho/2024</strong><small>Vencimento: 10/07/2024</small></div><div><strong>R$ {{ '%.2f'|format(aluno.valor) }}</strong><span class="redtxt">Pendente</span></div></div><div class="pay-row"><div><strong>Junho/2024</strong><small>Pago em 10/06/2024</small></div><div><strong>R$ {{ '%.2f'|format(aluno.valor) }}</strong><span class="green">Pago</span></div></div></section><button class="btn btn-red w-100">Pagar agora</button>{{ mobile_nav('financeiro') }}</main>
+{% endblock %}

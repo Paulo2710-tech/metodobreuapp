@@ -1,0 +1,18 @@
+{% extends 'base.html' %}{% from 'components.html' import sidebar %}
+{% block body %}
+<div class="app-shell">{{ sidebar('dashboard') }}<main class="main-area">
+  <div class="topbar"><div><h1>Olá, Personal! 👊</h1><p>Aqui está o resumo do seu negócio hoje.</p></div><div class="avatar-admin">Personal<br><small>Administrador</small></div></div>
+  <section class="kpi-grid">
+    <article class="kpi"><span>Alunos ativos</span><strong>{{ alunos|selectattr('status','equalto','Ativa')|list|length }}</strong><small class="green">+12 este mês</small><i data-lucide="users"></i></article>
+    <article class="kpi"><span>Treinos hoje</span><strong>24</strong><small>+5 em relação a ontem</small><i data-lucide="dumbbell"></i></article>
+    <article class="kpi"><span>Avaliações</span><strong>18</strong><small class="green">+3 este mês</small><i data-lucide="trending-up"></i></article>
+    <article class="kpi"><span>Receita mensal</span><strong>R$ {{ '%.2f'|format(receita + pendente) }}</strong><small class="green">85% recebido</small><i data-lucide="badge-dollar-sign"></i></article>
+  </section>
+  <section class="dashboard-grid">
+    <article class="panel chart-panel"><div class="panel-title"><h2>Evolução de Alunos</h2><select><option>Este mês</option></select></div><canvas id="alunosChart"></canvas></article>
+    <article class="panel"><div class="panel-title"><h2>Receita Mensal</h2></div><canvas id="receitaChart"></canvas></article>
+    <article class="panel"><div class="panel-title"><h2>Próximos Treinos</h2><a href="{{ url_for('treinos') }}">Ver todos</a></div>{% for a in alunos[:3] %}<div class="mini-row"><div class="mini-avatar">{{ a.nome[0] }}</div><div><strong>{{ a.nome }}</strong><small>Treino ABC • Hoje</small></div><span>08:00</span></div>{% endfor %}</article>
+    <article class="panel"><div class="panel-title"><h2>Mensagens não lidas</h2><a>Ver todas</a></div>{% for a in alunos[0:3] %}<div class="mini-row"><div class="mini-avatar">{{ a.nome[0] }}</div><div><strong>{{ a.nome }}</strong><small>Obrigada pelo treino de ontem! 🔥</small></div><span>Hoje</span></div>{% endfor %}</article>
+  </section>
+</main></div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}{% from 'components.html' import mobile_nav %}
+{% block body %}
+<main class="mobile-app">
+  <header class="mobile-header"><span class="brand-mark small">MA</span><i data-lucide="bell"></i></header>
+  <section class="mobile-hello"><div class="mini-avatar">{{ aluno.nome[0] }}</div><div><h1>Olá, {{ aluno.nome.split()[0] }}! 👋</h1><p>Pronta para mais um dia?</p></div></section>
+  <article class="hero-card"><span>Próximo treino</span><h2>Treino ABC</h2><p>Hoje • 08:00</p><a class="btn btn-red w-100" href="{{ url_for('aluno_treino') }}">Ver treino</a></article>
+  <section class="mobile-kpis"><div><i data-lucide="flame"></i><span>Treinos</span><strong>3/5</strong></div><div><i data-lucide="timer"></i><span>Minutos</span><strong>180</strong></div><div><i data-lucide="droplets"></i><span>Calorias</span><strong>1.250</strong></div><div><i data-lucide="badge-check"></i><span>Frequência</span><strong>100%</strong></div></section>
+  <article class="panel mobile-panel"><div class="panel-title"><h2>Evolução</h2><a href="{{ url_for('aluno_evolucao') }}">Ver mais</a></div><canvas id="mobilePesoChart"></canvas></article>
+  {{ mobile_nav('inicio') }}
+</main>
+{% endblock %}

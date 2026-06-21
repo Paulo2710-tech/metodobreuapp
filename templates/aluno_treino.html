@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% from 'components.html' import mobile_nav %}
+{% block body %}
+<main class="mobile-app"><header class="mobile-header"><a href="{{ url_for('aluno_dashboard') }}"><i data-lucide="arrow-left"></i></a><h1>Treino ABC</h1><i data-lucide="more-vertical"></i></header>
+{% for t in treinos %}<h2 class="section-title">{{ t.grupo }}</h2>{% for e in t.exercicios %}<article class="exercise-mobile"><div class="exercise-thumb"><i data-lucide="dumbbell"></i></div><div><strong>{{ e.nome }}</strong><small>{{ e.series }} séries x {{ e.reps }} reps</small></div><span>{{ e.descanso }}</span></article>{% endfor %}{% endfor %}
+<button class="btn btn-red w-100 fixed-action" onclick="toastDemo('Treino concluído')">Finalizar treino</button>{{ mobile_nav('treinos') }}</main>
+{% endblock %}

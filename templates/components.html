@@ -1,0 +1,25 @@
+{% macro sidebar(active='dashboard') %}
+<aside class="sidebar">
+  <a class="brand" href="{{ url_for('admin_dashboard') }}"><span class="brand-mark">MA</span><span>MÉTODO<br>ABREU</span></a>
+  <nav>
+    <a class="navlink {{ 'active' if active=='dashboard' }}" href="{{ url_for('admin_dashboard') }}"><i data-lucide="layout-dashboard"></i>Dashboard</a>
+    <a class="navlink {{ 'active' if active=='alunos' }}" href="{{ url_for('alunos') }}"><i data-lucide="users"></i>Alunos</a>
+    <a class="navlink {{ 'active' if active=='treinos' }}" href="{{ url_for('treinos') }}"><i data-lucide="dumbbell"></i>Treinos</a>
+    <a class="navlink {{ 'active' if active=='avaliacoes' }}" href="{{ url_for('alunos') }}"><i data-lucide="clipboard-check"></i>Avaliações</a>
+    <a class="navlink {{ 'active' if active=='financeiro' }}" href="{{ url_for('financeiro') }}"><i data-lucide="wallet"></i>Financeiro</a>
+    <a class="navlink" href="#"><i data-lucide="message-circle"></i>Mensagens</a>
+    <a class="navlink" href="#"><i data-lucide="file-bar-chart"></i>Relatórios</a>
+  </nav>
+  <a class="navlink logout" href="{{ url_for('login') }}"><i data-lucide="log-out"></i>Sair</a>
+</aside>
+{% endmacro %}
+
+{% macro mobile_nav(active='inicio') %}
+<nav class="mobile-tabbar">
+  <a class="{{ 'active' if active=='inicio' }}" href="{{ url_for('aluno_dashboard') }}"><i data-lucide="home"></i><span>Início</span></a>
+  <a class="{{ 'active' if active=='treinos' }}" href="{{ url_for('aluno_treino') }}"><i data-lucide="dumbbell"></i><span>Treinos</span></a>
+  <a class="{{ 'active' if active=='evolucao' }}" href="{{ url_for('aluno_evolucao') }}"><i data-lucide="chart-no-axes-combined"></i><span>Evolução</span></a>
+  <a class="{{ 'active' if active=='financeiro' }}" href="{{ url_for('aluno_financeiro') }}"><i data-lucide="wallet"></i><span>Financeiro</span></a>
+  <a class="{{ 'active' if active=='perfil' }}" href="{{ url_for('aluno_perfil_mobile') }}"><i data-lucide="user"></i><span>Perfil</span></a>
+</nav>
+{% endmacro %}

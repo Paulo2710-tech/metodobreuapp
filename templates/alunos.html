@@ -1,0 +1,8 @@
+{% extends 'base.html' %}{% from 'components.html' import sidebar %}
+{% block body %}
+<div class="app-shell">{{ sidebar('alunos') }}<main class="main-area">
+  <div class="topbar"><div><h1>Alunos</h1><p>Gestão completa de alunos, treinos e pagamentos.</p></div><button class="btn btn-red" onclick="toastDemo('Novo aluno')"><i data-lucide="plus"></i>Novo aluno</button></div>
+  <div class="panel"><div class="toolbar"><input class="search" placeholder="Buscar aluno..."><button class="btn btn-darkline"><i data-lucide="filter"></i>Filtrar</button></div>
+  <div class="table-responsive"><table class="premium-table"><thead><tr><th>Aluno</th><th>Status</th><th>Treinos</th><th>Avaliação</th><th>Financeiro</th><th>Ações</th></tr></thead><tbody>{% for a in alunos %}<tr><td><div class="student-cell"><div class="mini-avatar">{{ a.nome[0] }}</div><div><strong>{{ a.nome }}</strong><small>Início: {{ a.inicio }}</small></div></div></td><td><span class="badge-status {{ 'inactive' if a.status!='Ativa' }}">{{ a.status }}</span></td><td>{{ a.treinos }}</td><td>{{ a.avaliacao }}</td><td><span class="{{ 'redtxt' if a.mensalidade=='Pendente' else 'green' }}">{{ a.mensalidade }}</span></td><td><a class="icon-btn" href="{{ url_for('aluno_perfil', aluno_id=a.id) }}"><i data-lucide="eye"></i></a></td></tr>{% endfor %}</tbody></table></div></div>
+</main></div>
+{% endblock %}

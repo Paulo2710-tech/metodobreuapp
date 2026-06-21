@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% from 'components.html' import sidebar %}
+{% block body %}<div class="app-shell">{{ sidebar('alunos') }}<main class="main-area">
+  <div class="topbar"><a class="btn btn-darkline" href="{{ url_for('alunos') }}"><i data-lucide="arrow-left"></i>Voltar</a><button class="btn btn-red">Editar</button></div>
+  <section class="profile-grid"><article class="panel profile-head"><div class="profile-photo">{{ aluno.nome[0] }}</div><div><h1>{{ aluno.nome }}</h1><p>{{ aluno.objetivo }} • Início {{ aluno.inicio }}</p><span class="badge-status">{{ aluno.status }}</span></div><div class="profile-meta"><p>{{ aluno.telefone }}</p><p>{{ aluno.email }}</p></div></article>
+  <article class="panel"><h2>Indicadores</h2><div class="metric-row"><div><span>Peso atual</span><strong>{{ aluno.peso }}kg</strong></div><div><span>Meta</span><strong>{{ aluno.meta }}kg</strong></div><div><span>Mensalidade</span><strong class="redtxt">{{ aluno.mensalidade }}</strong></div></div><canvas id="pesoChart"></canvas></article>
+  <article class="panel"><h2>Treino atual</h2>{% for t in treinos %}<h3>{{ t.grupo }}</h3>{% for e in t.exercicios %}<div class="exercise-row"><i data-lucide="circle-play"></i><div><strong>{{ e.nome }}</strong><small>{{ e.series }} séries x {{ e.reps }} reps • {{ e.descanso }}</small></div></div>{% endfor %}{% endfor %}<button class="btn btn-red w-100 mt-3">Enviar treino para aluno</button></article></section>
+</main></div>{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+<main class="login-page">
+  <section class="login-card">
+    <div class="brand big"><span class="brand-mark">MA</span><span>MÉTODO<br>ABREU</span></div>
+    <h1>Seu melhor resultado começa aqui.</h1>
+    <p>Entre como aluno ou personal. Use admin@metodo.com para painel administrativo.</p>
+    <form method="post">
+      <label>E-mail</label><input name="email" type="email" placeholder="seuemail@exemplo.com" required>
+      <label>Senha</label><input name="senha" type="password" placeholder="••••••••" required>
+      <button class="btn btn-red w-100 mt-3">Entrar</button>
+    </form>
+    <a class="btn btn-outline-light w-100 mt-3" href="{{ url_for('home') }}">Voltar</a>
+    <p class="slogan">Disciplina hoje, liberdade amanhã.</p>
+  </section>
+</main>
+{% endblock %}
